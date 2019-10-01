@@ -30,11 +30,27 @@ public class Main {
             }
         });
 
-        System.out.println("\n***Top 50 Used Words***");
+        ArrayList<HashMap.Entry<String, Integer>> sortedList = new ArrayList<HashMap.Entry<String, Integer>>();
+
+        System.out.println("\n***Top 50 Used Words Sorted By Count***");
         for (int i = 0; i < 50; i++) {
+            sortedList.add(sortedMap.get(i));
             System.out.println((i + 1) + ": Word: " + sortedMap.get(i).getKey() + " | used: "
                     + sortedMap.get(i).getValue() + " times");
         }
         System.out.println();
+        sortedMap.clear();
+
+        Collections.sort(sortedList, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(HashMap.Entry<String, Integer> word1, HashMap.Entry<String, Integer> word2) {
+                return word1.getKey().compareToIgnoreCase(word2.getKey());
+            }
+        });
+
+        System.out.println("\n***Top 50 Used Words Sorted Alphabetically***");
+        for (int i = 0; i < 50; i++) {
+            System.out.println((i + 1) + ": Word: " + sortedList.get(i).getKey() + " | used: "
+                    + sortedList.get(i).getValue() + " times");
+        }
     }
 }
