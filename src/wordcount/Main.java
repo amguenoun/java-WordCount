@@ -9,6 +9,8 @@ public class Main {
         text = text.toLowerCase();
         String[] words = text.split(" ");
 
+        // HashMap - basically an arraylist where you can determine the index object
+        // type.
         HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
 
         for (int i = 0; i < words.length; i++) {
